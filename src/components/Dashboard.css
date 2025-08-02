@@ -1,0 +1,413 @@
+.dashboard {
+  background: #f8f9fa;
+  min-height: calc(100vh - 64px);
+  padding: 24px;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #e9ecef;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+}
+
+/* Tabs */
+.dashboard-tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 32px;
+  background: #e9ecef;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.tab-button {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.tab-button.active {
+  background: white;
+  color: #00BCD4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Participant Card */
+.participant-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.participant-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.participant-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+}
+
+.participant-period {
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+}
+
+.participant-plan {
+  font-size: 14px;
+  color: #00BCD4;
+  font-weight: 500;
+  margin: 0;
+}
+
+.participant-amount {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+}
+
+/* Support Categories */
+.support-categories {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 16px;
+}
+
+.category-card {
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.category-header:hover {
+  background-color: #f8f9fa;
+}
+
+.category-info {
+  flex: 1;
+}
+
+.category-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0 4px 0;
+}
+
+.category-subtitle {
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.expand-button:hover {
+  background-color: #e9ecef;
+}
+
+/* Category Content */
+.category-content {
+  padding: 0 24px 24px;
+  border-top: 1px solid #e9ecef;
+}
+
+.subsection-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+  margin: 20px 0 12px 0;
+}
+
+/* Funding Schedule */
+.funding-schedule {
+  margin-bottom: 24px;
+}
+
+.schedule-table {
+  background: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.schedule-header,
+.schedule-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  padding: 12px 16px;
+  font-size: 12px;
+}
+
+.schedule-header {
+  background: #e9ecef;
+  font-weight: 600;
+  color: #333333;
+}
+
+.schedule-row {
+  border-bottom: 1px solid #e9ecef;
+  color: #666666;
+}
+
+.schedule-row:last-child {
+  border-bottom: none;
+}
+
+.view-more {
+  background: none;
+  border: none;
+  color: #00BCD4;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 8px;
+  text-decoration: underline;
+}
+
+/* Support Items */
+.support-items {
+  margin-bottom: 24px;
+}
+
+.items-table {
+  background: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.items-header,
+.items-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 12px 16px;
+  font-size: 12px;
+}
+
+.items-header {
+  background: #e9ecef;
+  font-weight: 600;
+  color: #333333;
+}
+
+.items-row {
+  border-bottom: 1px solid #e9ecef;
+  color: #666666;
+}
+
+.items-row:last-child {
+  border-bottom: none;
+}
+
+/* Subcategories */
+.subcategories {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subcategory-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.subcategory-item:hover {
+  background-color: #e9ecef;
+}
+
+.subcategory-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0 0 4px 0;
+}
+
+.subcategory-amount {
+  font-size: 12px;
+  color: #666666;
+  margin: 0;
+}
+
+/* Action Buttons */
+.dashboard-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.action-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid;
+}
+
+.action-button.secondary {
+  background: white;
+  border-color: #e9ecef;
+  color: #333333;
+}
+
+.action-button.secondary:hover {
+  background: #f8f9fa;
+}
+
+.action-button.primary {
+  background: #00BCD4;
+  border-color: #00BCD4;
+  color: white;
+}
+
+.action-button.primary:hover {
+  background: #00ACC1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+  .dashboard {
+    padding: 16px;
+  }
+  
+  .dashboard-title {
+    font-size: 20px;
+  }
+  
+  .participant-card {
+    padding: 16px;
+  }
+  
+  .category-header {
+    padding: 16px;
+  }
+  
+  .category-content {
+    padding: 0 16px 16px;
+  }
+  
+  .schedule-header,
+  .schedule-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .items-header,
+  .items-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .dashboard-actions {
+    flex-direction: column;
+  }
+  
+  .action-button {
+    width: 100%;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .schedule-header,
+  .schedule-row {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+  
+  .items-header,
+  .items-row {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* Animation for expanding content */
+.category-content {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
