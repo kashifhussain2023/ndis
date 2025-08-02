@@ -1,8 +1,9 @@
 .app-container {
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, #E8F4FD 0%, #F0F9FF 50%, #E8F8F5 100%);
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .main-content {
@@ -16,7 +17,7 @@
 /* Mobile-first layout */
 @media (max-width: 767px) {
   .app-container {
-    background-color: white;
+    background: linear-gradient(135deg, #E8F4FD 0%, #F0F9FF 50%, #E8F8F5 100%);
   }
 
   .main-content {
