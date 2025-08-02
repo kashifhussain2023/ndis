@@ -1,0 +1,119 @@
+.checkbox-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333333;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-custom {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #E0E0E0;
+  border-radius: 4px;
+  background-color: white;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background-color: #00BCD4;
+  border-color: #00BCD4;
+}
+
+.checkbox-input:focus + .checkbox-custom {
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+.checkbox-custom.error {
+  border-color: #F44336;
+}
+
+.checkbox-input:checked + .checkbox-custom.error {
+  background-color: #F44336;
+  border-color: #F44336;
+}
+
+.checkbox-text {
+  flex: 1;
+}
+
+.checkbox-text a {
+  color: #00BCD4;
+  text-decoration: none;
+}
+
+.checkbox-text a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  font-size: 12px;
+  color: #F44336;
+  margin-left: 32px;
+}
+
+/* Tablet responsive adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .checkbox-field-container {
+    gap: 10px;
+  }
+  
+  .checkbox-label {
+    gap: 14px;
+    font-size: 15px;
+  }
+  
+  .checkbox-custom {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .error-message {
+    font-size: 13px;
+    margin-left: 36px;
+  }
+}
+
+/* Desktop responsive adjustments */
+@media (min-width: 1024px) {
+  .checkbox-field-container {
+    gap: 12px;
+  }
+  
+  .checkbox-label {
+    gap: 16px;
+    font-size: 16px;
+  }
+  
+  .checkbox-custom {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .error-message {
+    font-size: 14px;
+    margin-left: 40px;
+  }
+}

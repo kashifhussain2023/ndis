@@ -1,0 +1,153 @@
+.button {
+  position: relative;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  outline: none;
+}
+
+.button:focus {
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
+}
+
+/* Button variants */
+.button-primary {
+  background-color: #00BCD4;
+  color: white;
+}
+
+.button-primary:hover:not(.button-disabled) {
+  background-color: #00ACC1;
+}
+
+.button-primary:active:not(.button-disabled) {
+  background-color: #0097A7;
+}
+
+.button-secondary {
+  background-color: white;
+  color: #00BCD4;
+  border: 2px solid #00BCD4;
+}
+
+.button-secondary:hover:not(.button-disabled) {
+  background-color: #f0fdff;
+}
+
+.button-secondary:active:not(.button-disabled) {
+  background-color: #e0fbff;
+}
+
+/* Button sizes */
+.button-small {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.button-medium {
+  padding: 14px 24px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.button-large {
+  padding: 16px 32px;
+  font-size: 18px;
+  width: 100%;
+}
+
+/* Button states */
+.button-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-loading {
+  cursor: not-allowed;
+}
+
+.button-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner {
+  animation: rotate 2s linear infinite;
+  width: 20px;
+  height: 20px;
+}
+
+.spinner .path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+.button-text {
+  transition: opacity 0.2s ease;
+}
+
+.button-text-hidden {
+  opacity: 0;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+/* Tablet responsive adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .button-medium {
+    padding: 16px 28px;
+    font-size: 17px;
+  }
+  
+  .button-large {
+    padding: 18px 36px;
+    font-size: 19px;
+  }
+}
+
+/* Desktop responsive adjustments */
+@media (min-width: 1024px) {
+  .button-medium {
+    padding: 18px 32px;
+    font-size: 18px;
+  }
+  
+  .button-large {
+    padding: 20px 40px;
+    font-size: 20px;
+  }
+  
+  .button:hover:not(.button-disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+}
