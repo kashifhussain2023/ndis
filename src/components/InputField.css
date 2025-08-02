@@ -1,0 +1,137 @@
+.input-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0;
+}
+
+.optional-text {
+  color: #999999;
+  font-weight: 400;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #00BCD4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+.input-field.error {
+  border-color: #F44336;
+}
+
+.input-field.error:focus {
+  border-color: #F44336;
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+}
+
+.input-field.disabled {
+  background-color: #f5f5f5;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+.input-field::placeholder {
+  color: #999999;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666666;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle:hover {
+  color: #333333;
+}
+
+.password-toggle:focus {
+  outline: none;
+  color: #00BCD4;
+}
+
+.error-message {
+  font-size: 12px;
+  color: #F44336;
+  margin-top: -4px;
+}
+
+/* Tablet responsive adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .input-field-container {
+    gap: 10px;
+  }
+  
+  .input-label {
+    font-size: 15px;
+  }
+  
+  .input-field {
+    padding: 14px 18px;
+    font-size: 16px;
+  }
+  
+  .password-toggle {
+    right: 14px;
+  }
+  
+  .error-message {
+    font-size: 13px;
+  }
+}
+
+/* Desktop responsive adjustments */
+@media (min-width: 1024px) {
+  .input-field-container {
+    gap: 12px;
+  }
+  
+  .input-label {
+    font-size: 16px;
+  }
+  
+  .input-field {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+  
+  .password-toggle {
+    right: 16px;
+  }
+  
+  .error-message {
+    font-size: 14px;
+  }
+}
