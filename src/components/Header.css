@@ -1,10 +1,13 @@
-.app-header {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.ndis-header {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: white;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .header-container {
@@ -21,12 +24,20 @@
 .logo-section {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
-.logo {
+.ndis-logo {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  letter-spacing: -0.025em;
 }
 
 /* Navigation */
@@ -50,53 +61,79 @@
 .nav-link {
   background: none;
   border: none;
-  color: #666666;
+  color: #64748b;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   padding: 8px 0;
   position: relative;
   transition: color 0.2s ease;
+  font-family: inherit;
 }
 
 .nav-link:hover {
-  color: #333333;
+  color: #334155;
 }
 
 .nav-item.active .nav-link {
-  color: #00BCD4;
+  color: #0891b2;
   font-weight: 600;
 }
 
 .nav-item.active .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -16px;
+  bottom: -21px;
   left: 0;
   right: 0;
   height: 2px;
-  background-color: #00BCD4;
+  background-color: #0891b2;
   border-radius: 1px;
 }
 
-/* User Section */
-.user-section {
+/* Header Right Section */
+.header-right {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.search-icon {
+/* Notification Button */
+.notification-button {
+  position: relative;
+  background: none;
+  border: none;
   padding: 8px;
   cursor: pointer;
   border-radius: 6px;
   transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.search-icon:hover {
-  background-color: #f5f5f5;
+.notification-button:hover {
+  background-color: #f8fafc;
 }
 
+.notification-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+/* User Profile */
 .user-profile {
   display: flex;
   align-items: center;
@@ -109,20 +146,21 @@
 }
 
 .user-profile:hover {
-  background-color: #f5f5f5;
+  background-color: #f8fafc;
 }
 
 .user-avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00BCD4, #00ACC1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 12px;
-  font-weight: 600;
+  overflow: hidden;
+  border: 2px solid #e2e8f0;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-info {
@@ -134,7 +172,7 @@
 .user-name {
   font-size: 14px;
   font-weight: 500;
-  color: #333333;
+  color: #1e293b;
 }
 
 .dropdown-arrow {
@@ -151,9 +189,9 @@
   top: 100%;
   right: 0;
   background: white;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   min-width: 240px;
   padding: 8px 0;
   z-index: 1000;
@@ -171,13 +209,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00BCD4, #00ACC1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
+  overflow: hidden;
+  border: 2px solid #e2e8f0;
 }
 
 .user-menu-info {
@@ -187,18 +220,18 @@
 .user-menu-name {
   font-size: 14px;
   font-weight: 600;
-  color: #333333;
+  color: #1e293b;
   margin-bottom: 2px;
 }
 
 .user-menu-email {
   font-size: 12px;
-  color: #666666;
+  color: #64748b;
 }
 
 .user-menu-divider {
   height: 1px;
-  background-color: #E0E0E0;
+  background-color: #e2e8f0;
   margin: 8px 0;
 }
 
@@ -208,17 +241,18 @@
   border: none;
   text-align: left;
   padding: 12px 16px;
-  color: #333333;
+  color: #374151;
   font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 12px;
   transition: background-color 0.2s ease;
+  font-family: inherit;
 }
 
 .user-menu-item:hover {
-  background-color: #f5f5f5;
+  background-color: #f8fafc;
 }
 
 .user-menu-item.logout {
@@ -226,7 +260,7 @@
 }
 
 .user-menu-item.logout:hover {
-  background-color: #fff5f5;
+  background-color: #fef2f2;
 }
 
 /* Animations */
@@ -267,11 +301,15 @@
     display: none;
   }
   
+  .logo-text {
+    font-size: 14px;
+  }
+  
   .user-name {
     display: none;
   }
   
-  .user-section {
+  .header-right {
     gap: 12px;
   }
   
@@ -279,6 +317,20 @@
     min-width: 200px;
     right: -8px;
   }
+  
+  .ndis-logo svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Focus states for accessibility */
+.nav-link:focus,
+.notification-button:focus,
+.user-profile:focus {
+  outline: 2px solid #0891b2;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Hide user menu when clicking outside */
@@ -289,4 +341,10 @@
 /* Focus management */
 .user-profile:focus-within .dropdown-arrow {
   transform: rotate(180deg);
+}
+
+/* Loading states */
+.notification-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
