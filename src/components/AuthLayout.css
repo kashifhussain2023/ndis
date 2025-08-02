@@ -1,0 +1,237 @@
+.auth-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E8F4FD 0%, #F0F9FF 50%, #E8F8F5 100%);
+}
+
+.auth-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  min-height: 100vh;
+}
+
+/* Banner Column */
+.banner-column {
+  position: relative;
+  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.banner-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 48px;
+  text-align: center;
+  max-width: 600px;
+}
+
+.banner-text {
+  color: white;
+}
+
+.banner-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.banner-title .highlight {
+  color: #FFD700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.banner-description {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.banner-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Form Column */
+.form-column {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  position: relative;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Mobile Layout (Hide banner, single column) */
+@media (max-width: 1023px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .banner-column {
+    display: none;
+  }
+  
+  .form-column {
+    background: linear-gradient(135deg, #E8F4FD 0%, #F0F9FF 50%, #E8F8F5 100%);
+    padding: 16px;
+    min-height: 100vh;
+  }
+  
+  .form-wrapper {
+    max-width: 400px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .form-column {
+    padding: 24px;
+  }
+  
+  .form-wrapper {
+    max-width: 500px;
+  }
+}
+
+/* Large desktop adjustments */
+@media (min-width: 1440px) {
+  .banner-overlay {
+    padding: 64px;
+  }
+  
+  .banner-title {
+    font-size: 56px;
+  }
+  
+  .banner-description {
+    font-size: 20px;
+  }
+  
+  .form-column {
+    padding: 48px;
+  }
+}
+
+/* Animation for banner content */
+.banner-overlay {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Form animation */
+.form-wrapper {
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Background pattern overlay */
+.banner-column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  z-index: 0;
+}
+
+/* Responsive banner features */
+@media (max-width: 1199px) {
+  .banner-features {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .banner-title {
+    font-size: 42px;
+  }
+  
+  .banner-description {
+    font-size: 16px;
+  }
+}
+
+/* Very large screens */
+@media (min-width: 1600px) {
+  .auth-container {
+    grid-template-columns: 3fr 2fr;
+  }
+}
