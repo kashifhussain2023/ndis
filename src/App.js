@@ -7,14 +7,7 @@ import './App.css';
 function App() {
   const handleRegistration = async (formData) => {
     console.log('Registration data:', formData);
-
-    // Simulate API call
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        alert('Registration successful! Welcome to the app.');
-        resolve();
-      }, 1500);
-    });
+    alert('Registration successful! Welcome to the app.');
   };
 
   const handleSignInClick = () => {
