@@ -5,6 +5,7 @@ import './Dashboard.css';
 const Dashboard = ({ user, onLogout }) => {
   const { theme, deviceType } = useTheme();
   const [activeTab, setActiveTab] = useState('NDIS Plan');
+  const [expandedCategory, setExpandedCategory] = useState('Core Flexible (Plan-managed)');
 
   const tabs = ['NDIS Plan', 'COC', 'End of Plan'];
 
@@ -18,93 +19,35 @@ const Dashboard = ({ user, onLogout }) => {
   const supportCategories = [
     {
       title: 'Core Flexible (Plan-managed)',
-      amount: '$8,000',
-      expanded: true,
-      subcategories: [
-        {
-          title: 'Home and Living',
-          amount: '$3,000'
-        },
-        {
-          title: 'Choice and Control',
-          amount: '$1,000'
-        },
-        {
-          title: 'Home and Living',
-          amount: '$1,000'
-        },
-        {
-          title: 'Improved Daily Living Skills',
-          amount: '$1,000'
-        },
-        {
-          title: 'Support Coordination and Psychosocial Recovery Coaches',
-          amount: '$1,000'
-        },
-        {
-          title: 'Recurring Transport',
-          amount: '$1,000'
-        }
+      amount: '$10,000',
+      fundingSchedule: [
+        { period: '25/06/2025 to 24/09/2025', duration: '3 months', amount: '$5,000' },
+        { period: '25/09/2025 to 24/12/2025', duration: '3 months', amount: '$3,000' },
+        { period: '25/12/2025 to 26/03/2026', duration: '3 months', amount: '$2,000' },
+        { period: '25/12/2025 to 26/03/2026', duration: '3 months', amount: '$2,000' },
+        { period: '25/12/2025 to 26/03/2026', duration: '3 months', amount: '$2,000' }
+      ],
+      supportItems: [
+        { name: 'Personal Care Support', frequency: 'Daily', hours: 4, costPerHr: '$35', total: '$140' },
+        { name: 'Transport Support', frequency: 'Weekly', hours: 2, costPerHr: '$35', total: '$140' },
+        { name: 'Social Inclusion', frequency: 'Weekly', hours: 3, costPerHr: '$30', total: '$90' }
       ]
-    }
+    },
+    { title: 'Home and Living', amount: '$5,000' },
+    { title: 'Choice and Control', amount: '$5,000' },
+    { title: 'Improved Daily Living Skills', amount: '$10,000' },
+    { title: 'Support Coordination and Psychosocial Recovery Coaches', amount: '$10,000' },
+    { title: 'Recurring Transport', amount: '$5,000' }
   ];
 
-  const scheduleData = [
-    {
-      period: '24/09/2025 to 26/09/2025',
-      frequency: '3 months',
-      amount: '$3,000'
-    },
-    {
-      period: '26/09/2025 to 26/12/2025',
-      frequency: '3 months',
-      amount: '$3,000'
-    },
-    {
-      period: '22/12/2025 to 26/03/2026',
-      frequency: '3 months',
-      amount: '$2,000'
-    },
-    {
-      period: '24/12/2025 to 24/03/2026',
-      frequency: '3 months',
-      amount: '$2,000'
-    },
-    {
-      period: '22/12/2025 to 26/03/2026',
-      frequency: '6 months',
-      amount: '$2,000'
-    }
-  ];
-
-  const supportItems = [
-    {
-      category: 'Personal Care Support',
-      frequency: 'Daily',
-      hours: 4,
-      quantity: '$50',
-      total: '$200'
-    },
-    {
-      category: 'Transport Support',
-      frequency: 'Weekly',
-      hours: 2,
-      quantity: '$30',
-      total: '$60'
-    },
-    {
-      category: 'Social Inclusion',
-      frequency: 'Weekly',
-      hours: 3,
-      quantity: '$30',
-      total: '$90'
-    }
-  ];
+  const toggleCategory = (categoryTitle) => {
+    setExpandedCategory(expandedCategory === categoryTitle ? null : categoryTitle);
+  };
 
   return (
     <div className={`dashboard ${deviceType}`}>
       <div className="dashboard-container">
-        {/* Back Button and Title */}
+        {/* Breadcrumb and Title */}
         <div className="dashboard-header">
           <button className="back-button">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -127,7 +70,7 @@ const Dashboard = ({ user, onLogout }) => {
           ))}
         </div>
 
-        {/* Participant Info */}
+        {/* Participant Plan Card */}
         <div className="participant-card">
           <div className="participant-info">
             <h2 className="participant-name">Name: {participantData.name}</h2>
@@ -143,19 +86,31 @@ const Dashboard = ({ user, onLogout }) => {
           
           {supportCategories.map((category, index) => (
             <div key={index} className="category-card">
-              <div className="category-header">
+              <div 
+                className="category-header"
+                onClick={() => toggleCategory(category.title)}
+              >
                 <div className="category-info">
                   <h4 className="category-title">{category.title}</h4>
                   <p className="category-subtitle">Funding amount: {category.amount}</p>
                 </div>
                 <button className="expand-button">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <svg 
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 24 24" 
+                    fill="none"
+                    style={{ 
+                      transform: expandedCategory === category.title ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.2s ease'
+                    }}
+                  >
                     <path d="M6 9L12 15L18 9" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
               </div>
 
-              {category.expanded && (
+              {expandedCategory === category.title && category.fundingSchedule && (
                 <div className="category-content">
                   {/* Funding Schedule */}
                   <div className="funding-schedule">
@@ -163,14 +118,14 @@ const Dashboard = ({ user, onLogout }) => {
                     <div className="schedule-table">
                       <div className="schedule-header">
                         <span>Period</span>
-                        <span>Frequency</span>
+                        <span>Duration</span>
                         <span>Amount</span>
                       </div>
-                      {scheduleData.map((item, idx) => (
+                      {category.fundingSchedule.map((item, idx) => (
                         <div key={idx} className="schedule-row">
-                          <span>{item.period}</span>
-                          <span>{item.frequency}</span>
-                          <span>{item.amount}</span>
+                          <span className="period-text">{item.period}</span>
+                          <span className="duration-text">{item.duration}</span>
+                          <span className="amount-text">{item.amount}</span>
                         </div>
                       ))}
                     </div>
@@ -180,39 +135,27 @@ const Dashboard = ({ user, onLogout }) => {
                   {/* Support Items */}
                   <div className="support-items">
                     <h5 className="subsection-title">Included Support Items</h5>
-                    <div className="items-table">
-                      <div className="items-header">
-                        <span>Item</span>
-                        <span>Frequency</span>
-                        <span>Hours</span>
-                        <span>Quantity</span>
-                        <span>Total</span>
-                      </div>
-                      {supportItems.map((item, idx) => (
-                        <div key={idx} className="items-row">
-                          <span>{item.category}</span>
-                          <span>{item.frequency}</span>
-                          <span>{item.hours}</span>
-                          <span>{item.quantity}</span>
-                          <span>{item.total}</span>
+                    {category.supportItems.map((item, idx) => (
+                      <div key={idx} className="support-item">
+                        <div className="item-header">
+                          <h6 className="item-name">{item.name}</h6>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Subcategories */}
-                  <div className="subcategories">
-                    {category.subcategories.map((sub, idx) => (
-                      <div key={idx} className="subcategory-item">
-                        <div className="subcategory-info">
-                          <h6 className="subcategory-title">{sub.title}</h6>
-                          <p className="subcategory-amount">Funding amount: {sub.amount}</p>
+                        <div className="item-details">
+                          <div className="item-row">
+                            <span className="label">Frequency</span>
+                            <span className="label">Hours</span>
+                            <span className="label">Cost/Hr</span>
+                            <span className="label">Total</span>
+                          </div>
+                          <div className="item-values">
+                            <select className="frequency-select">
+                              <option value={item.frequency}>{item.frequency}</option>
+                            </select>
+                            <span className="hours-value">{item.hours}</span>
+                            <span className="cost-value">{item.costPerHr}</span>
+                            <span className="total-value">{item.total}</span>
+                          </div>
                         </div>
-                        <button className="expand-button">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 9L12 15L18 9" stroke="#666" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </button>
                       </div>
                     ))}
                   </div>
